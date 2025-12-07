@@ -1,4 +1,4 @@
-# Sura Database
+# Temis Database
 ==============
 
 [![Downloads this Month](https://img.shields.io/packagist/dm/temis/database.svg)](https://packagist.org/packages/temis/database)
