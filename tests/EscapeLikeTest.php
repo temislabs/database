@@ -10,9 +10,9 @@
 
 declare (strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Database;
+use Temis\Database\Database;
 use PDO;
 
 class EscapeLikeTest extends DatabaseTest

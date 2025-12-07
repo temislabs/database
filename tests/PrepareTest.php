@@ -10,22 +10,22 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Exception\QueryError;
+use Temis\Database\Exception\QueryError;
 use PDOStatement;
 
 /**
  * Class ExecTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class PrepareTest extends DatabaseWriteTest
 {
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseInsertManyProvider
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
      * @param callable $cb
      * @param array $maps
      */

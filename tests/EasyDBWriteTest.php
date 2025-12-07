@@ -10,15 +10,15 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use Exception;
-use Tephida\Database\Database;
-use Tephida\Database\Factory;
+use Temis\Database\Database;
+use Temis\Database\Factory;
 
 /**
  * Class DatabaseTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 abstract class DatabaseWriteTest extends DatabaseTest
 {

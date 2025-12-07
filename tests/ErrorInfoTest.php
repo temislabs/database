@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 /**
  * Class ErrorInfoTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class ErrorInfoTest extends DatabaseTest
 {

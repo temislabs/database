@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use InvalidArgumentException;
-use Tephida\Database\EasyStatement;
+use Temis\Database\EasyStatement;
 
 class UpdateTest extends DatabaseWriteTest
 {
@@ -101,7 +101,7 @@ class UpdateTest extends DatabaseWriteTest
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseProvider
-     * @depends      Tephida\Database\Tests\InsertManyTest::testInsertMany
+     * @depends      Temis\Database\Tests\InsertManyTest::testInsertMany
      * @param callable $cb
      */
     public function testUpdateEasyStatement(callable $cb)
@@ -138,7 +138,7 @@ class UpdateTest extends DatabaseWriteTest
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseProvider
-     * @depends      Tephida\Database\Tests\InsertManyTest::testInsertMany
+     * @depends      Temis\Database\Tests\InsertManyTest::testInsertMany
      * @param callable $cb
      */
     public function testUpdate(callable $cb)

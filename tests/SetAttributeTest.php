@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use Exception;
-use Tephida\Database\Database;
+use Temis\Database\Database;
 use PDO;
 use PDOException;
 
@@ -22,7 +22,7 @@ class SetAttributeTest extends GetAttributeTest
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseWithPDOAttributeProvider
-     * @depends      Tephida\Database\Tests\GetAttributeTest::testAttribute
+     * @depends      Temis\Database\Tests\GetAttributeTest::testAttribute
      * @param callable $cb
      * @param $attr
      * @param string $attrName

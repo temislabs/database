@@ -10,19 +10,19 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 class SingleTestIs1DArrayThenDeleteReadOnlyTestThenDeleteWriteTest extends DatabaseWriteTest
 {
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseInsertManyProvider
-     * @depends      Tephida\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteThrowsException
-     * @depends      Tephida\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteTableNameEmptyThrowsException
-     * @depends      Tephida\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteTableNameInvalidThrowsException
-     * @depends      Tephida\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteConditionsReturnsNull
-     * @depends      Tephida\Database\Tests\InsertManyTest::testInsertMany
-     * @depends      Tephida\Database\Tests\SingleTest::testMethod
+     * @depends      Temis\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteThrowsException
+     * @depends      Temis\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteTableNameEmptyThrowsException
+     * @depends      Temis\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteTableNameInvalidThrowsException
+     * @depends      Temis\Database\Tests\Is1DArrayThenDeleteReadOnlyTest::testDeleteConditionsReturnsNull
+     * @depends      Temis\Database\Tests\InsertManyTest::testInsertMany
+     * @depends      Temis\Database\Tests\SingleTest::testMethod
      * @param callable $cb
      * @param array $insertMany
      */

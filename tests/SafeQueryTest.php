@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Database;
-use Tephida\Database\Factory;
+use Temis\Database\Database;
+use Temis\Database\Factory;
 
 class SafeQueryTest extends RunTest
 {

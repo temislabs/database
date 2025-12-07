@@ -10,20 +10,20 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 /**
  * Class ExecTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class QuoteThenExecTest extends DatabaseWriteTest
 {
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseInsertManyProvider
-     * @depends      Tephida\Database\Tests\QuoteTest::testQuote
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
+     * @depends      Temis\Database\Tests\QuoteTest::testQuote
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
      * @param callable $cb
      * @param array $maps
      */

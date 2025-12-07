@@ -8,15 +8,15 @@
  *
  */
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\EasyStatement;
-use Tephida\Database\Exception\MustBeNonEmpty;
+use Temis\Database\EasyStatement;
+use Temis\Database\Exception\MustBeNonEmpty;
 use PHPUnit\Framework\TestCase as TestCase;
 use RuntimeException;
 
 /**
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class EasyStatementTest extends TestCase
 {

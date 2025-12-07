@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use InvalidArgumentException;
-use Tephida\Database\Database;
+use Temis\Database\Database;
 use PDOException;
 
 class InsertManyFlatTransactionTest extends DatabaseWriteTest

@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Exception\ConstructorFailed;
-use Tephida\Database\Factory;
+use Temis\Database\Exception\ConstructorFailed;
+use Temis\Database\Factory;
 
 class ConstructorFailedTest extends DatabaseTest
 {

@@ -28,12 +28,12 @@
   },
   "autoload": {
     "psr-4": {
-        "Tephida\\Database\\": "src"
+        "Temis\\Database\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-        "Tephida\\Database\\Tests\\": "tests"
+        "Temis\\Database\\Tests\\": "tests"
     }
   }
 }

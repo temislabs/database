@@ -10,15 +10,15 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Database;
-use Tephida\Database\Factory;
+use Temis\Database\Database;
+use Temis\Database\Factory;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class FactoryTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class FactoryTest extends TestCase
 {

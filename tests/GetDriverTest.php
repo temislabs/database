@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
-use Tephida\Database\Factory;
+use Temis\Database\Factory;
 
 class GetDriverTest extends DatabaseTest
 {

@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use InvalidArgumentException;
 
 /**
  * Class DatabaseTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class EscapeValueSetTest extends DatabaseTest
 {
@@ -228,7 +228,7 @@ class EscapeValueSetTest extends DatabaseTest
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseProvider
-     * @depends      Tephida\Database\Tests\Is1DArrayTest::testIs1DArray
+     * @depends      Temis\Database\Tests\Is1DArrayTest::testIs1DArray
      * @param callable $cb
      */
     public function testEscapeValueSetFailsIs1DArray(callable $cb)
@@ -240,8 +240,8 @@ class EscapeValueSetTest extends DatabaseTest
 
     /**
      * @dataProvider badFactoryCreateArgument2DatabaseEscapeValueSetProvider
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
      * @param callable $cb
      * @param array $escapeThis
      * @param string $escapeThatAsType
@@ -256,8 +256,8 @@ class EscapeValueSetTest extends DatabaseTest
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseEscapeValueSetProvider
      * @depends      testEscapeValueSetThrowsException
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
      * @param callable $cb
      * @param array $escapeThis
      * @param string $escapeThatAsType

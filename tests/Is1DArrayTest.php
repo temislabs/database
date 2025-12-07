@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 use InvalidArgumentException;
-use Tephida\Database\Factory;
+use Temis\Database\Factory;
 
 class Is1DArrayTest extends DatabaseTest
 {

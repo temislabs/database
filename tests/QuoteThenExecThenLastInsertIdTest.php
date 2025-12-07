@@ -10,21 +10,21 @@
 
 declare(strict_types=1);
 
-namespace Tephida\Database\Tests;
+namespace Temis\Database\Tests;
 
 /**
  * Class ExecTest
- * @package Tephida\Database\Tests
+ * @package Temis\Database\Tests
  */
 class QuoteThenExecThenLastInsertIdTest extends DatabaseWriteTest
 {
 
     /**
      * @dataProvider goodFactoryCreateArgument2DatabaseInsertManyProvider
-     * @depends      Tephida\Database\Tests\QuoteTest::testQuote
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
-     * @depends      Tephida\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
-     * @depends      Tephida\Database\Tests\QuoteThenExecTest::testExec
+     * @depends      Temis\Database\Tests\QuoteTest::testQuote
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifier
+     * @depends      Temis\Database\Tests\EscapeIdentifierTest::testEscapeIdentifierThrowsSomething
+     * @depends      Temis\Database\Tests\QuoteThenExecTest::testExec
      * @param callable $cb
      * @param array $maps
      */
