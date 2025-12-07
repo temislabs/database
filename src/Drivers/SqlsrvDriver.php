@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
-use Sura\Database\Exception\InvalidArgumentException;
-use Sura\Database\Exception\NotSupportedException;
-use Sura\Database\Helpers;
+use Temis\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\NotSupportedException;
+use Temis\Database\Helpers;
 
 /**
  * Supplemental SQL Server 2005 and later database driver.
@@ -28,7 +28,7 @@ class SqlsrvDriver extends PdoDriver
      * @param string|null $password
      * @param array|null $options
      * @return void
-     * @throws \Sura\Database\Exception\DriverException
+     * @throws \Temis\Database\Exception\DriverException
      */
 	public function connect(
 		string $dsn,
@@ -118,7 +118,7 @@ class SqlsrvDriver extends PdoDriver
 	/********************* reflection ****************d*g**/
 
     /**
-     * @return array|\Sura\Database\Reflection\Table[]
+     * @return array|\Temis\Database\Reflection\Table[]
      */
 	public function getTables(): array
 	{
@@ -135,13 +135,13 @@ class SqlsrvDriver extends PdoDriver
 				type IN ('U', 'V')
 			X)->fetchAll(
 			\PDO::FETCH_FUNC,
-			fn($name, $view) => new \Sura\Database\Reflection\Table($name, (bool) $view),
+			fn($name, $view) => new \Temis\Database\Reflection\Table($name, (bool) $view),
 		);
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Column[]
+     * @return array|\Temis\Database\Reflection\Column[]
      */
 	public function getColumns(string $table): array
 	{
@@ -174,7 +174,7 @@ class SqlsrvDriver extends PdoDriver
 			$row['autoIncrement'] = (bool) $row['autoIncrement'];
 			$row['primary'] = (bool) $row['primary'];
 
-			$columns[] = new \Sura\Database\Reflection\Column(...$row);
+			$columns[] = new \Temis\Database\Reflection\Column(...$row);
 		}
 
 		return $columns;
@@ -182,7 +182,7 @@ class SqlsrvDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Index[]
+     * @return array|\Temis\Database\Reflection\Index[]
      */
 	public function getIndexes(string $table): array
 	{
@@ -214,12 +214,12 @@ class SqlsrvDriver extends PdoDriver
 			$indexes[$id]['columns'][] = $row['column'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\Index(...$data), array_values($indexes));
+		return array_map(fn($data) => new \Temis\Database\Reflection\Index(...$data), array_values($indexes));
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\ForeignKey[]
+     * @return array|\Temis\Database\Reflection\ForeignKey[]
      */
 	public function getForeignKeys(string $table): array
 	{
@@ -248,7 +248,7 @@ class SqlsrvDriver extends PdoDriver
 			$keys[$id]['targetColumns'][] = $row['column'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\ForeignKey(...$data), array_values($keys));
+		return array_map(fn($data) => new \Temis\Database\Reflection\ForeignKey(...$data), array_values($keys));
 	}
 
     /**

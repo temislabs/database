@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023. Sura
+ * Copyright (c) 2023. Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Utils;
+namespace Temis\Database\Utils;
 
 use JetBrains\PhpStorm\Language;
-use Sura\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\InvalidArgumentException;
 //use function is_array, is_int, is_object, count;
 
 /**

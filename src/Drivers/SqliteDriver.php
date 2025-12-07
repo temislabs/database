@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,14 +9,14 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
-use Sura\Database\Exception\ConstraintViolationException;
-use Sura\Database\Exception\ForeignKeyConstraintViolationException;
-use Sura\Database\Exception\InvalidArgumentException;
-use Sura\Database\Exception\NotNullConstraintViolationException;
-use Sura\Database\Exception\NotSupportedException;
-use Sura\Database\Exception\UniqueConstraintViolationException;
+use Temis\Database\Exception\ConstraintViolationException;
+use Temis\Database\Exception\ForeignKeyConstraintViolationException;
+use Temis\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\NotNullConstraintViolationException;
+use Temis\Database\Exception\NotSupportedException;
+use Temis\Database\Exception\UniqueConstraintViolationException;
 
 /**
  * Supplemental SQLite3 database driver.
@@ -32,7 +32,7 @@ class SqliteDriver extends PdoDriver
      * @param string|null $password
      * @param array|null $options
      * @return void
-     * @throws \Sura\Database\Exception\DriverException
+     * @throws \Temis\Database\Exception\DriverException
      */
 	public function connect(
 		string $dsn,
@@ -143,7 +143,7 @@ class SqliteDriver extends PdoDriver
 	/********************* reflection ****************d*g**/
 
     /**
-     * @return array|\Sura\Database\Reflection\Table[]
+     * @return array|\Temis\Database\Reflection\Table[]
      */
 	public function getTables(): array
 	{
@@ -158,13 +158,13 @@ class SqliteDriver extends PdoDriver
 			ORDER BY name
 			X)->fetchAll(
 			\PDO::FETCH_FUNC,
-			fn($name, $view) => new \Sura\Database\Reflection\Table($name, (bool) $view),
+			fn($name, $view) => new \Temis\Database\Reflection\Table($name, (bool) $view),
 		);
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Column[]
+     * @return array|\Temis\Database\Reflection\Column[]
      */
 	public function getColumns(string $table): array
 	{
@@ -183,7 +183,7 @@ class SqliteDriver extends PdoDriver
 			$column = $row['name'];
 			$pattern = "/(\"$column\"|`$column`|\\[$column\\]|$column)\\s+[^,]+\\s+PRIMARY\\s+KEY\\s+AUTOINCREMENT/Ui";
 			$type = explode('(', $row['type']);
-			$columns[] = new \Sura\Database\Reflection\Column(
+			$columns[] = new \Temis\Database\Reflection\Column(
 				name: $column,
 				table: $table,
 				nativeType: $type[0],
@@ -201,7 +201,7 @@ class SqliteDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Index[]
+     * @return array|\Temis\Database\Reflection\Index[]
      */
 	public function getIndexes(string $table): array
 	{
@@ -244,12 +244,12 @@ class SqliteDriver extends PdoDriver
 			}
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\Index(...$data), array_values($indexes));
+		return array_map(fn($data) => new \Temis\Database\Reflection\Index(...$data), array_values($indexes));
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\ForeignKey[]
+     * @return array|\Temis\Database\Reflection\ForeignKey[]
      */
 	public function getForeignKeys(string $table): array
 	{
@@ -265,7 +265,7 @@ class SqliteDriver extends PdoDriver
 			}
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\ForeignKey(...$data), array_values($keys));
+		return array_map(fn($data) => new \Temis\Database\Reflection\ForeignKey(...$data), array_values($keys));
 	}
 
     /**
@@ -280,10 +280,10 @@ class SqliteDriver extends PdoDriver
 			$meta = $statement->getColumnMeta($col);
 			if (isset($meta['sqlite:decl_type'])) {
 				$types[$meta['name']] = in_array($meta['sqlite:decl_type'], ['DATE', 'DATETIME'], strict: true)
-					? \Sura\Database\Contracts\IStructure::FIELD_UNIX_TIMESTAMP
-					: \Sura\Database\Helpers::detectType($meta['sqlite:decl_type']);
+					? \Temis\Database\Contracts\IStructure::FIELD_UNIX_TIMESTAMP
+					: \Temis\Database\Helpers::detectType($meta['sqlite:decl_type']);
 			} elseif (isset($meta['native_type'])) {
-				$types[$meta['name']] = \Sura\Database\Helpers::detectType($meta['native_type']);
+				$types[$meta['name']] = \Temis\Database\Helpers::detectType($meta['native_type']);
 			}
 		}
 
