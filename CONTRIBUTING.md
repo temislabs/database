@@ -2,7 +2,7 @@
 
 ## Pull Requests
 
-1. Fork the Temis Framework repository
+1. Fork the Sura Framework repository
 2. Create a new branch for each feature or improvement
 3. Send a pull request from each feature branch to the **1.x** branch
 
@@ -15,6 +15,6 @@ All pull requests must adhere to the [PSR-12 standard](https://github.com/php-fi
 
 ## Unit Testing
 
-All pull requests must be accompanied by passing unit tests and complete code coverage. The Temis Framework uses phpunit for testing.
+All pull requests must be accompanied by passing unit tests and complete code coverage. The Sura Framework uses phpunit for testing.
 
 [Learn about PHPUnit](https://github.com/sebastianbergmann/phpunit/)

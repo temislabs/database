@@ -12,7 +12,7 @@
          stopOnError="false"
          stopOnFailure="false"
 >
-    <testsuite name="temis/database Test Suite">
+    <testsuite name="paragonie/easydb Test Suite">
         <directory suffix="Test.php">./tests</directory>
     </testsuite>
     <logging>
