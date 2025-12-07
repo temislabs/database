@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023 Sura
+ * Copyright (c) 2023 Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,19 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database;
+namespace Temis\Database;
 
-use Sura\Database\Contracts\IStructure;
-use Sura\Database\Contracts\ResultDriver;
-use Sura\Database\Exception\ConnectionException;
-use Sura\Database\Exception\FileNotFoundException;
+use Temis\Database\Contracts\IStructure;
+use Temis\Database\Contracts\ResultDriver;
+use Temis\Database\Exception\ConnectionException;
+use Temis\Database\Exception\FileNotFoundException;
 
 /**
  * Database helpers.
  */
 class Helpers
 {
-	use \Sura\Database\Utils\StaticClass;
+	use \Temis\Database\Utils\StaticClass;
 
 	/** maximum SQL length */
 	public static int $maxLength = 100;

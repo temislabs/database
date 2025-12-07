@@ -1,4 +1,4 @@
-# Sura Database
+# Temis Database
 ==============
 
 [![Downloads this Month](https://img.shields.io/packagist/dm/sura/database.svg)](https://packagist.org/packages/sura/database)
@@ -11,7 +11,7 @@ Installation
 The recommended way to install is via Composer:
 
 ```
-composer require sura/database
+composer require temis/database
 ```
 
 It requires supports PHP up to 8.1.

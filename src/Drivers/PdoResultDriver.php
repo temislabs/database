@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
 /**
  * PDO-based result-set driver.
  */
-class PdoResultDriver implements \Sura\Database\Contracts\ResultDriver
+class PdoResultDriver implements \Temis\Database\Contracts\ResultDriver
 {
 	private \PDOStatement $result;
 

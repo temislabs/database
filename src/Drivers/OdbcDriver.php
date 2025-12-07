@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
-use Sura\Database\Exception\InvalidArgumentException;
-use Sura\Database\Exception\NotImplementedException;
-use Sura\Database\Exception\NotSupportedException;
+use Temis\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\NotImplementedException;
+use Temis\Database\Exception\NotSupportedException;
 
 /**
  * Supplemental ODBC database driver.
@@ -84,7 +84,7 @@ class OdbcDriver extends PdoDriver
 	/********************* reflection ****************d*g**/
 
     /**
-     * @return array|\Sura\Database\Reflection\Table[]
+     * @return array|\Temis\Database\Reflection\Table[]
      */
 	public function getTables(): array
 	{
@@ -93,7 +93,7 @@ class OdbcDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Column[]
+     * @return array|\Temis\Database\Reflection\Column[]
      */
 	public function getColumns(string $table): array
 	{
@@ -102,7 +102,7 @@ class OdbcDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Index[]
+     * @return array|\Temis\Database\Reflection\Index[]
      */
 	public function getIndexes(string $table): array
 	{
@@ -111,7 +111,7 @@ class OdbcDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\ForeignKey[]
+     * @return array|\Temis\Database\Reflection\ForeignKey[]
      */
 	public function getForeignKeys(string $table): array
 	{

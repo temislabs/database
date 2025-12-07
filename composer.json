@@ -1,7 +1,7 @@
 {
-	"name": "sura/database",
-	"description": "The Sura database.",
-	"keywords": ["database", "sura"],
+	"name": "temis/database",
+	"description": "The Temis database.",
+	"keywords": ["database", "temis"],
 	"license": ["MIT"],
 	"authors": [
 		{
@@ -23,12 +23,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Sura\\Database\\": "src"
+			"Temis\\Database\\": "src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Sura\\Database\\Tests\\": "tests"
+			"Temis\\Database\\Tests\\": "tests"
 		}
 	},
 	"minimum-stability": "dev",

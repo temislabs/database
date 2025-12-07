@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023 Sura
+ * Copyright (c) 2023 Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Utils;
+namespace Temis\Database\Utils;
 
 /**
  * Provides objects to work as array.
@@ -65,7 +65,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     public function offsetSet($key, $value): void
     {
         if (!is_scalar($key)) { // prevents null
-            throw new \Sura\Database\Exception\InvalidArgumentException(sprintf('Key must be either a string or an integer, %s given.', get_debug_type($key)));
+            throw new \Temis\Database\Exception\InvalidArgumentException(sprintf('Key must be either a string or an integer, %s given.', get_debug_type($key)));
         }
 
         $this->$key = $value;

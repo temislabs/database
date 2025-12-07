@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,19 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database;
+namespace Temis\Database;
 
-use Sura\Database\Contracts\IRow;
-use Sura\Database\Exception\MemberAccessException;
+use Temis\Database\Contracts\IRow;
+use Temis\Database\Exception\MemberAccessException;
 
 /**
  * Represents a single table row.
  */
-class Row extends \Sura\Database\Utils\ArrayHash implements IRow
+class Row extends \Temis\Database\Utils\ArrayHash implements IRow
 {
 	public function __get($key)
 	{
-		$hint = \Sura\Database\Utils\Helpers::getSuggestion(array_map('strval', array_keys((array) $this)), $key);
+		$hint = \Temis\Database\Utils\Helpers::getSuggestion(array_map('strval', array_keys((array) $this)), $key);
 		throw new MemberAccessException("Cannot read an undeclared column '$key'" . ($hint ? ", did you mean '$hint'?" : '.'));
 	}
 

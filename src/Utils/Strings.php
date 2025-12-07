@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023 Sura
+ * Copyright (c) 2023 Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Utils;
+namespace Temis\Database\Utils;
 
 use JetBrains\PhpStorm\Language;
-use Sura\Database\Exception\InvalidArgumentException;
-use Sura\Database\Exception\NotSupportedException;
+use Temis\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\NotSupportedException;
 
 //use function is_array, is_object, strlen;
 
@@ -31,7 +31,7 @@ class Strings
 
 
     /**
-     * @deprecated use Sura\Database\Utils\Validator::isUnicode()
+     * @deprecated use Temis\Database\Utils\Validator::isUnicode()
      */
     public static function checkEncoding(string $s): bool
     {
@@ -71,12 +71,12 @@ class Strings
     public static function ord(string $c): int
     {
         if (!extension_loaded('iconv')) {
-            throw new \Sura\Database\Exception\NotSupportedException(__METHOD__ . '() requires ICONV extension that is not loaded.');
+            throw new \Temis\Database\Exception\NotSupportedException(__METHOD__ . '() requires ICONV extension that is not loaded.');
         }
 
         $tmp = iconv('UTF-8', 'UTF-32BE//IGNORE', $c);
         if (!$tmp) {
-            throw new \Sura\Database\Exception\InvalidArgumentException('Invalid UTF-8 character "' . ($c === '' ? '' : '\x' . strtoupper(bin2hex($c))) . '".');
+            throw new \Temis\Database\Exception\InvalidArgumentException('Invalid UTF-8 character "' . ($c === '' ? '' : '\x' . strtoupper(bin2hex($c))) . '".');
         }
 
         return unpack('N', $tmp)[1];
@@ -119,7 +119,7 @@ class Strings
         if (function_exists('mb_substr')) {
             return mb_substr($s, $start, $length, 'UTF-8'); // MB is much faster
         } elseif (!extension_loaded('iconv')) {
-            throw new \Sura\Database\Exception\NotSupportedException(__METHOD__ . '() requires extension ICONV or MBSTRING, neither is loaded.');
+            throw new \Temis\Database\Exception\NotSupportedException(__METHOD__ . '() requires extension ICONV or MBSTRING, neither is loaded.');
         } elseif ($length === null) {
             $length = self::length($s);
         } elseif ($start < 0 && $length < 0) {
@@ -448,7 +448,7 @@ class Strings
     public static function reverse(string $s): string
     {
         if (!extension_loaded('iconv')) {
-            throw new \Sura\Database\Exception\NotSupportedException(__METHOD__ . '() requires ICONV extension that is not loaded.');
+            throw new \Temis\Database\Exception\NotSupportedException(__METHOD__ . '() requires ICONV extension that is not loaded.');
         }
 
         return iconv('UTF-32LE', 'UTF-8', strrev(iconv('UTF-8', 'UTF-32BE', $s)));
@@ -645,7 +645,7 @@ class Strings
     {
         if (is_object($replacement) || is_array($replacement)) {
             if (!is_callable($replacement, false, $textual)) {
-                throw new \Sura\Database\Exception\InvalidStateException("Callback '$textual' is not callable.");
+                throw new \Temis\Database\Exception\InvalidStateException("Callback '$textual' is not callable.");
             }
 
             $flags = ($captureOffset ? PREG_OFFSET_CAPTURE : 0) | ($unmatchedAsNull ? PREG_UNMATCHED_AS_NULL : 0);

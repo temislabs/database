@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,19 +9,19 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
 use PDO;
 use PDOException;
-use Sura\Database\Exception\ConnectionException;
-use Sura\Database\Exception\DriverException;
-use Sura\Database\Exception\QueryException;
+use Temis\Database\Exception\ConnectionException;
+use Temis\Database\Exception\DriverException;
+use Temis\Database\Exception\QueryException;
 
 
 /**
  * PDO-based driver.
  */
-abstract class PdoDriver implements \Sura\Database\Contracts\Driver
+abstract class PdoDriver implements \Temis\Database\Contracts\Driver
 {
 	protected ?PDO $pdo = null;
 

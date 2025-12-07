@@ -1,6 +1,6 @@
 <?php
 
-namespace Sura\Database\Utils;
+namespace Temis\Database\Utils;
 
 
 class Helpers{
@@ -48,7 +48,7 @@ class Helpers{
 	public static function clamp(int|float $value, int|float $min, int|float $max): int|float
 	{
 		if ($min > $max) {
-			throw new \Sura\Database\Exception\InvalidArgumentException("Minimum ($min) is not less than maximum ($max).");
+			throw new \Temis\Database\Exception\InvalidArgumentException("Minimum ($min) is not less than maximum ($max).");
 		}
 
 		return min(max($value, $min), $max);
@@ -88,7 +88,7 @@ class Helpers{
 			'===' => $left === $right,
 			'!=', '<>' => $left != $right,
 			'!==' => $left !== $right,
-			default => throw new \Sura\Database\Exception\InvalidArgumentException("Unknown operator '$operator'"),
+			default => throw new \Temis\Database\Exception\InvalidArgumentException("Unknown operator '$operator'"),
 		};
 	}
 }

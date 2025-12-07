@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database;
+namespace Temis\Database;
 
-use Sura\Database\Contracts\Driver;
-use Sura\Database\Exception\InvalidArgumentException;
+use Temis\Database\Contracts\Driver;
+use Temis\Database\Exception\InvalidArgumentException;
 
 /**
  * SQL preprocessor.
@@ -97,7 +97,7 @@ class SqlPreprocessor
 			} elseif (is_string($param) && $this->counter > $prev + 1) {
 				$prev = $this->counter;
 				$this->arrayMode = null;
-				$res[] = \Sura\Database\Utils\Strings::replace(
+				$res[] = \Temis\Database\Utils\Strings::replace(
 					$param,
 					<<<'X'
 						~
@@ -175,7 +175,7 @@ class SqlPreprocessor
 			} elseif ($value === null) {
 				return 'NULL';
 
-			} elseif ($value instanceof \Sura\Database\Table\ActiveRow) {
+			} elseif ($value instanceof \Temis\Database\Table\ActiveRow) {
 				$this->remaining[] = $value->getPrimary();
 				return '?';
 
@@ -208,7 +208,7 @@ class SqlPreprocessor
 			return $this->delimite($value);
 		}
 
-		if ($value instanceof \Traversable && !$value instanceof \Sura\Database\Table\ActiveRow) {
+		if ($value instanceof \Traversable && !$value instanceof \Temis\Database\Table\ActiveRow) {
 			$value = iterator_to_array($value);
 		}
 

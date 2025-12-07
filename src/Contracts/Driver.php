@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023. Sura
+ * Copyright (c) 2023. Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Contracts;
+namespace Temis\Database\Contracts;
 
 
-use Sura\Database\Exception\ConnectionException;
+use Temis\Database\Exception\ConnectionException;
 
 /**
  * Supplemental database driver.
@@ -79,25 +79,25 @@ interface Driver
 	/********************* reflection ****************d*g**/
 
 	/**
-	 * @return \Sura\Database\Reflection\Table[]
+	 * @return \Temis\Database\Reflection\Table[]
 	 */
 	function getTables(): array;
 
 	/**
 	 * Returns metadata for all columns in a table.
-	 * @return \Sura\Database\Reflection\Column[]
+	 * @return \Temis\Database\Reflection\Column[]
 	 */
 	function getColumns(string $table): array;
 
 	/**
 	 * Returns metadata for all indexes in a table.
-	 * @return \Sura\Database\Reflection\Index[]
+	 * @return \Temis\Database\Reflection\Index[]
 	 */
 	function getIndexes(string $table): array;
 
 	/**
 	 * Returns metadata for all foreign keys in a table.
-	 * @return \Sura\Database\Reflection\ForeignKey[]
+	 * @return \Temis\Database\Reflection\ForeignKey[]
 	 */
 	function getForeignKeys(string $table): array;
 

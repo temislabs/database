@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2023.Sura
+ * Copyright (c) 2023.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
-use Sura\Database\Exception\ConnectionException;
-use Sura\Database\Exception\ForeignKeyConstraintViolationException;
-use Sura\Database\Exception\NotNullConstraintViolationException;
-use Sura\Database\Exception\UniqueConstraintViolationException;
+use Temis\Database\Exception\ConnectionException;
+use Temis\Database\Exception\ForeignKeyConstraintViolationException;
+use Temis\Database\Exception\NotNullConstraintViolationException;
+use Temis\Database\Exception\UniqueConstraintViolationException;
 
 /**
  * Supplemental MySQL database driver.
@@ -128,7 +128,7 @@ class MySqlDriver extends PdoDriver
 	public function applyLimit(string &$sql, ?int $limit, ?int $offset): void
 	{
 		if ($limit < 0 || $offset < 0) {
-			throw new \Sura\Database\Exception\InvalidArgumentException('Negative offset or limit.');
+			throw new \Temis\Database\Exception\InvalidArgumentException('Negative offset or limit.');
 
 		} elseif ($limit !== null || $offset) {
 			// see http://dev.mysql.com/doc/refman/5.0/en/select.html
@@ -141,26 +141,26 @@ class MySqlDriver extends PdoDriver
 	/********************* reflection ****************d*g**/
 
     /**
-     * @return array|\Sura\Database\Reflection\Table[]
+     * @return array|\Temis\Database\Reflection\Table[]
      */
 	public function getTables(): array
 	{
 		return $this->pdo->query('SHOW FULL TABLES')->fetchAll(
 			\PDO::FETCH_FUNC,
-			fn($name, $type) => new \Sura\Database\Reflection\Table($name, $type === 'VIEW'),
+			fn($name, $type) => new \Temis\Database\Reflection\Table($name, $type === 'VIEW'),
 		);
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Column[]
+     * @return array|\Temis\Database\Reflection\Column[]
      */
 	public function getColumns(string $table): array
 	{
 		$columns = [];
 		foreach ($this->pdo->query('SHOW FULL COLUMNS FROM ' . $this->delimite($table), \PDO::FETCH_ASSOC) as $row) {
 			$type = explode('(', $row['Type']);
-			$columns[] = new \Sura\Database\Reflection\Column(
+			$columns[] = new \Temis\Database\Reflection\Column(
 				name: $row['Field'],
 				table: $table,
 				nativeType: $type[0],
@@ -178,7 +178,7 @@ class MySqlDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Index[]
+     * @return array|\Temis\Database\Reflection\Index[]
      */
 	public function getIndexes(string $table): array
 	{
@@ -191,12 +191,12 @@ class MySqlDriver extends PdoDriver
 			$indexes[$id]['columns'][$row['Seq_in_index'] - 1] = $row['Column_name'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\Index(...$data), array_values($indexes));
+		return array_map(fn($data) => new \Temis\Database\Reflection\Index(...$data), array_values($indexes));
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\ForeignKey[]
+     * @return array|\Temis\Database\Reflection\ForeignKey[]
      */
 	public function getForeignKeys(string $table): array
 	{
@@ -215,7 +215,7 @@ class MySqlDriver extends PdoDriver
 			$keys[$id]['targetColumns'][] = $row['REFERENCED_COLUMN_NAME'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\ForeignKey(...$data), array_values($keys));
+		return array_map(fn($data) => new \Temis\Database\Reflection\ForeignKey(...$data), array_values($keys));
 	}
 
     /**
@@ -229,9 +229,9 @@ class MySqlDriver extends PdoDriver
 		for ($col = 0; $col < $count; $col++) {
 			$meta = $statement->getColumnMeta($col);
 			if (isset($meta['native_type'])) {
-				$types[$meta['name']] = $type = \Sura\Database\Helpers::detectType($meta['native_type']);
-				if ($type === \Sura\Database\Contracts\IStructure::FIELD_TIME) {
-					$types[$meta['name']] = \Sura\Database\Contracts\IStructure::FIELD_TIME_INTERVAL;
+				$types[$meta['name']] = $type = \Temis\Database\Helpers::detectType($meta['native_type']);
+				if ($type === \Temis\Database\Contracts\IStructure::FIELD_TIME) {
+					$types[$meta['name']] = \Temis\Database\Contracts\IStructure::FIELD_TIME_INTERVAL;
 				}
 			}
 		}

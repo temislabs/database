@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database\Drivers;
+namespace Temis\Database\Drivers;
 
-use Sura\Database\Exception\InvalidArgumentException;
-use Sura\Database\Exception\NotSupportedException;
+use Temis\Database\Exception\InvalidArgumentException;
+use Temis\Database\Exception\NotSupportedException;
 
 /**
  * Supplemental MS SQL database driver.
@@ -84,19 +84,19 @@ class MsSqlDriver extends PdoDriver
 	/********************* reflection ****************d*g**/
 
     /**
-     * @return array|\Sura\Database\Reflection\Table[]
+     * @return array|\Temis\Database\Reflection\Table[]
      */
 	public function getTables(): array
 	{
 		return $this->pdo->query('SELECT TABLE_SCHEMA, TABLE_NAME, TABLE_TYPE FROM INFORMATION_SCHEMA.TABLES')->fetchAll(
 			\PDO::FETCH_FUNC,
-			fn($schema, $name, $type) => new \Sura\Database\Reflection\Table($schema . '.' . $name, $type === 'VIEW'),
+			fn($schema, $name, $type) => new \Temis\Database\Reflection\Table($schema . '.' . $name, $type === 'VIEW'),
 		);
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Column[]
+     * @return array|\Temis\Database\Reflection\Column[]
      */
 	public function getColumns(string $table): array
 	{
@@ -120,7 +120,7 @@ class MsSqlDriver extends PdoDriver
 			X;
 
 		foreach ($this->pdo->query($query, \PDO::FETCH_ASSOC) as $row) {
-			$columns[] = new \Sura\Database\Reflection\Column(
+			$columns[] = new \Temis\Database\Reflection\Column(
 				name: $row['COLUMN_NAME'],
 				table: $table,
 				nativeType: $row['DATA_TYPE'],
@@ -138,7 +138,7 @@ class MsSqlDriver extends PdoDriver
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\Index[]
+     * @return array|\Temis\Database\Reflection\Index[]
      */
 	public function getIndexes(string $table): array
 	{
@@ -171,12 +171,12 @@ class MsSqlDriver extends PdoDriver
 			$indexes[$id]['columns'][$row['id_column'] - 1] = $row['name_column'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\Index(...$data), array_values($indexes));
+		return array_map(fn($data) => new \Temis\Database\Reflection\Index(...$data), array_values($indexes));
 	}
 
     /**
      * @param string $table
-     * @return array|\Sura\Database\Reflection\ForeignKey[]
+     * @return array|\Temis\Database\Reflection\ForeignKey[]
      */
 	public function getForeignKeys(string $table): array
 	{
@@ -215,7 +215,7 @@ class MsSqlDriver extends PdoDriver
 			$keys[$id]['targetColumns'][] = $row['referenced_column'];
 		}
 
-		return array_map(fn($data) => new \Sura\Database\Reflection\ForeignKey(...$data), array_values($keys));
+		return array_map(fn($data) => new \Temis\Database\Reflection\ForeignKey(...$data), array_values($keys));
 	}
 
     /**
@@ -224,7 +224,7 @@ class MsSqlDriver extends PdoDriver
      */
 	public function getColumnTypes(\PDOStatement $statement): array
 	{
-		return \Sura\Database\Helpers::detectTypes($statement);
+		return \Temis\Database\Helpers::detectTypes($statement);
 	}
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2023 Sura
+ * Copyright (c) 2023 Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database;
+namespace Temis\Database;
 
 use JetBrains\PhpStorm\Language;
-use Sura\Database\Contracts\Driver;
-use Sura\Database\Exception\ConnectionException;
-use Sura\Database\Exception\DriverException;
-use Sura\Database\Utils\Arrays;
+use Temis\Database\Contracts\Driver;
+use Temis\Database\Exception\ConnectionException;
+use Temis\Database\Exception\DriverException;
+use Temis\Database\Utils\Arrays;
 
 /**
  * Represents a connection between PHP and a database server.
@@ -71,7 +71,7 @@ class Database
 
 		$dsn = explode(':', $this->params[0])[0];
 		$class = empty($this->options['driverClass'])
-			? 'Sura\Database\Drivers\\' . ucfirst(str_replace('sql', 'Sql', $dsn)) . 'Driver'
+			? 'Temis\Database\Drivers\\' . ucfirst(str_replace('sql', 'Sql', $dsn)) . 'Driver'
 			: $this->options['driverClass'];
 		if (!class_exists($class)) {
 			throw new ConnectionException("Invalid data source '$dsn'.");

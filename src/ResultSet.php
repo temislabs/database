@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2004-$today.year.Sura
+ * Copyright (c) 2004-$today.year.Temis
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Sura\Database;
+namespace Temis\Database;
 
-use Sura\Database\Contracts\IRowContainer;
-use Sura\Database\Contracts\ResultDriver;
+use Temis\Database\Contracts\IRowContainer;
+use Temis\Database\Contracts\ResultDriver;
 
 /**
  * Represents a result set.
@@ -63,7 +63,7 @@ class ResultSet implements \Iterator, IRowContainer
 	/** @deprecated */
 	public function getConnection(): Database
 	{
-		throw new \Sura\Database\Exception\DeprecatedException(__METHOD__ . '() is deprecated.');
+		throw new \Temis\Database\Exception\DeprecatedException(__METHOD__ . '() is deprecated.');
 	}
 
 
@@ -143,7 +143,7 @@ class ResultSet implements \Iterator, IRowContainer
 	public function rewind(): void
 	{
 		if ($this->lastRow === false) {
-			throw new \Sura\Database\Exception\InvalidStateException(self::class . ' implements only one way iterator.');
+			throw new \Temis\Database\Exception\InvalidStateException(self::class . ' implements only one way iterator.');
 		}
 	}
 
@@ -260,6 +260,6 @@ class ResultSet implements \Iterator, IRowContainer
 	 */
 	public function fetchAssoc(string $path): array
 	{
-		return \Sura\Database\Utils\Arrays::associate($this->fetchAll(), $path);
+		return \Temis\Database\Utils\Arrays::associate($this->fetchAll(), $path);
 	}
 }
